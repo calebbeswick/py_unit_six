@@ -47,6 +47,34 @@ def merge(list1, list2):
     :param list2: a second list in sorted order
     :return: a single list consisting of both smaller lists combined in sorted order.
     """
+    list_two = []
+    z = 0
+    y = 0
+    for x in range(len(list1 + list2)):
+        if z >= len(list2):
+            for x in range(len(list2)):
+                list_two.append(list1[z])
+                z = z + 1
+            break
+        if y >= len(list1):
+            for x in range(len(list1)):
+                list_two.append(list2[y])
+                y = y + 1
+            break
 
-get_max([-9, -32, -5, -205, -115])
-merge([3, 4, 7, 9], [1, 3, 4, 5, 7, 8, 9, 11])
+        if list1[z] >= list2[y]:
+            list_two.append(list2[y])
+            y = y + 1
+        elif list1[z] <= list2[y]:
+            list_two.append(list1[z])
+            z = z + 1
+        elif list1[z] == list2[y]:
+            list_two.append(list1[z])
+            z = z + 1
+    print(list_two)
+    return list_two
+
+
+
+merge([3, 4, 7, 9], [1, 5, 8, 11])
+
